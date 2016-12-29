@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order('created_at DESC')
      add_breadcrumb "Listings", :listings_path
   end
 
@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.build
     add_breadcrumb "Listings", :listings_path
     add_breadcrumb "Create New Listing", :new_listing_path
   end
@@ -33,7 +33,7 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
 
     respond_to do |format|
       if @listing.save
@@ -78,6 +78,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:address, :price)
+      params.require(:listing).permit(:address, :price, :user_id)
     end
 end
