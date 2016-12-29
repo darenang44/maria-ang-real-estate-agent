@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :listings, param: :address
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#index"
@@ -21,3 +22,13 @@ end
 #                          DELETE /users(.:format)               devise/registrations#destroy
 #                          POST   /users(.:format)               devise/registrations#create
 #                     root GET    /                              welcome#index
+
+            #       Prefix Verb   URI Pattern                       Controller#Action
+            #     listings GET    /listings(.:format)               listings#index
+            #              POST   /listings(.:format)               listings#create
+            #  new_listing GET    /listings/new(.:format)           listings#new
+            # edit_listing GET    /listings/:address/edit(.:format) listings#edit
+            #      listing GET    /listings/:address(.:format)      listings#show
+            #              PATCH  /listings/:address(.:format)      listings#update
+            #              PUT    /listings/:address(.:format)      listings#update
+            #              DELETE /listings/:address(.:format)      listings#destroy
