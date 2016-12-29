@@ -55,3 +55,4 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2'
 gem 'devise-bootstrap-views', '~> 0.0.10'
 gem 'meta-tags', '~> 2.4'
+gem "breadcrumbs_on_rails"

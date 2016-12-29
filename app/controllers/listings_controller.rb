@@ -1,24 +1,33 @@
 class ListingsController < ApplicationController
+   add_breadcrumb "Home", :root_path
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
     @listings = Listing.all
+     add_breadcrumb "Listings", :listings_path
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    add_breadcrumb "Listings", :listings_path
+    add_breadcrumb "Current Listing", :listing_path
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
+    add_breadcrumb "Listings", :listings_path
+    add_breadcrumb "Create New Listing", :new_listing_path
   end
 
   # GET /listings/1/edit
   def edit
+    add_breadcrumb "Listings", :listings_path
+    add_breadcrumb "Current Listing", :listing_path
+    add_breadcrumb "Edit Current Listing", :edit_listing_path
   end
 
   # POST /listings
