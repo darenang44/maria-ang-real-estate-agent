@@ -2,6 +2,12 @@ class ListingsController < ApplicationController
    add_breadcrumb "Home", :root_path
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @listings = Listing.search(params[:search_param])
+    add_breadcrumb "Listings", :listings_path
+    add_breadcrumb "Search", :search_path
+  end
+
   # GET /listings
   # GET /listings.json
   def index

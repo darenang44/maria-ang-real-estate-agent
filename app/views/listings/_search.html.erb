@@ -1,0 +1,7 @@
+<h1>Search</h1>
+<%= form_tag search_path, remote: false, method: :get do %>
+  <%= text_field_tag :search_param, params[:search_param], placeholder: "Search for Listings", autofocus: true, class: "form-control search-box input-lg" %>
+  <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+    <i class="fa fa-search"></i> Look Up a Listing
+  <% end %>
+<% end %>
