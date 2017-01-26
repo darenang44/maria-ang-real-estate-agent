@@ -14,8 +14,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
+<%= alphabetical_paginate @alphaParams %>
+  <tbody id="pagination_table">
     <% @listings.each do |listing| %>
       <tr>
         <td><%= listing.address %></td>

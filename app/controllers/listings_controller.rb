@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
 
   def search
     @listings = Listing.search(params[:search_param])
+
     add_breadcrumb "Listings", :listings_path
     add_breadcrumb "Search", :search_path
   end
@@ -11,7 +12,9 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all.order('created_at DESC')
+    # @listings = Listing.all.order('created_at DESC')
+    # @listings, @alphaParams = Listing.alpha_paginate(params[:letter], {db_mode: true, db_field: "address"})
+    @listings, @alphaParams = Listing.all.alpha_paginate(params[:letter]){|listing| listing.address}
      add_breadcrumb "Listings", :listings_path
   end
 
